@@ -19,9 +19,9 @@ const CharacterDialogBody = ({ character }: { character: Character }) => {
     name: character.name,
     status: character.status,
     gender: character.gender,
-    location: character.location.name,
     species: character.species,
     totalEpisode: character.episode.length,
+    location: character.location.name,
   };
 
   return (
@@ -39,7 +39,7 @@ const CharacterDialogBody = ({ character }: { character: Character }) => {
       {/* Character Details Section */}
       <Box w={{ base: "100%", lg: "60%" }}>
         {Object.entries(displayCharacter).map(([key, value], i) => (
-          <Box key={i} display="flex" h="8">
+          <Box key={i} display="flex" h="8" mb="2">
             <Text fontWeight="extrabold" color="blackAlpha.900">
               {startcase(key)}:&nbsp;
             </Text>
