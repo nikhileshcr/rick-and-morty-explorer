@@ -39,7 +39,7 @@
 
 ## 📦 Installation
 
-**Clone repository** - git clone
+**Clone repository** - git clone https://github.com/nikhileshcr/rick-and-morty-explorer.git
 
 **Install dependencies** - npm install
 
