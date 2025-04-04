@@ -40,8 +40,10 @@ const CharacterDialogBody = ({ character }: { character: Character }) => {
       <Box w={{ base: "100%", lg: "60%" }}>
         {Object.entries(displayCharacter).map(([key, value], i) => (
           <Box key={i} display="flex" h="8">
-            <Text fontWeight="extrabold">{startcase(key)}:&nbsp;</Text>
-            <Text>{value}</Text>
+            <Text fontWeight="extrabold" color="blackAlpha.900">
+              {startcase(key)}:&nbsp;
+            </Text>
+            <Text color="blackAlpha.900">{value}</Text>
           </Box>
         ))}
       </Box>

@@ -145,7 +145,7 @@ export default function UserInfo() {
               required
               invalid={errorState[field.name]}
             >
-              <Field.Label fontSize="lg">
+              <Field.Label fontSize="lg" color="blackAlpha.900">
                 {field.label} <Field.RequiredIndicator />
               </Field.Label>
 
@@ -166,6 +166,7 @@ export default function UserInfo() {
                     onChange={handleChange}
                     disabled={loading}
                     aria-label={`Enter ${field.label.toLowerCase()}`}
+                    color="blackAlpha.900"
                   />
                 </InputGroup>
                 {loading && <Spinner size="sm" ml="2" aria-label="Loading" />}
