@@ -2,6 +2,8 @@
 
 ![Project Banner](./public/images/logo.png)
 
+## [TRY IT HERE](https://rick-and-morty-explorer-three.vercel.app/)
+
 ## 🚀 Features
 
 ### 🔒 Blocking Element
