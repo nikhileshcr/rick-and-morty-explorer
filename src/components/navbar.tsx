@@ -41,21 +41,23 @@ export default function Navbar() {
         align="center"
         justify="space-between"
       >
-        {/* Logo for Desktop */}
-        <Image
-          src="images/as-white-logo.png"
-          w="20%"
-          alt="AS logo"
-          display={{ base: "none", sm: "none", lg: "block" }} // Hidden on small screens
-        ></Image>
+        <Link href="/">
+          {/* Logo for Desktop */}
+          <Image
+            src="images/as-white-logo.png"
+            w="35%"
+            alt="AS logo"
+            display={{ base: "none", sm: "none", lg: "block" }} // Hidden on small screens
+          ></Image>
 
-        {/* Logo for Mobile */}
-        <Image
-          src="images/as-black-logo.png"
-          w="35%"
-          alt="AS logo"
-          display={{ lg: "none" }} // Visible only on mobile
-        ></Image>
+          {/* Logo for Mobile */}
+          <Image
+            src="images/as-black-logo.png"
+            w="35%"
+            alt="AS logo"
+            display={{ lg: "none" }} // Visible only on mobile
+          ></Image>
+        </Link>
 
         {/* Desktop Navigation Links */}
         <Flex display={{ base: "none", md: "flex" }} ml={10}>
