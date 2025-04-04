@@ -2,7 +2,7 @@
 // Client-side component for displaying paginated character information
 
 // Core React and Next.js imports
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 
 // Chakra UI components for layout and styling
@@ -29,7 +29,16 @@ import { CHARACTER_HEADING } from "@/constants/general-messages";
  * - Character detail dialogs
  * - Responsive grid layout
  */
-export default function Information() {
+
+function InformationWrapper() {
+  return (
+    <Suspense fallback={<GlobalSpinner />}>
+      <InformationContent />
+    </Suspense>
+  );
+}
+
+function InformationContent() {
   // Next.js navigation hooks
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -166,5 +175,13 @@ export default function Information() {
         />
       </Box>
     )
+  );
+}
+
+export default function Information() {
+  return (
+    <Suspense fallback={<GlobalSpinner />}>
+      <InformationWrapper />
+    </Suspense>
   );
 }
