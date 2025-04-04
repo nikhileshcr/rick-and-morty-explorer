@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Multiverse Explorer: Rick and Morty Character Database
 
-## Getting Started
+![Project Banner](./public/images/logo.png)
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 🔒 Blocking Element
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Mandatory name/job title entry
+- Local storage/context persistence
+- Update/delete details capability
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 🌌 Character Exploration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Paginated character grid (20/page)
+- Detailed character modals with:
+  - Status indicators (Alive/Dead/Unknown)
+  - Species & origin details
+  - Episode appearances
+  - High-res character images
 
-## Learn More
+### 🎨 Premium UX
 
-To learn more about Next.js, take a look at the following resources:
+- Responsive grid (1-5 columns)
+- Chakra UI components + custom theme
+- Page transition animations
+- and many more
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ⚡ Technologies
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+![Tech Stack](https://skillicons.dev/icons?i=nextjs,react,ts,graphql,chakra)
 
-## Deploy on Vercel
+- **Frontend**: Next.js 14 (App Router), React 18
+- **State Management**: Context API, LocalStorage
+- **UI Library**: Chakra UI v3
+- **Animation**: Framer Motion
+- **Data Fetching**: Apollo Client
+- **API**: Rick and Morty GraphQL API - [Try Here](https://rickandmortyapi.com/graphql) - [Documentation](https://rickandmortyapi.com/documentation)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📦 Installation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Clone repository** - git clone
+
+**Install dependencies** - npm install
+
+**Start development server** - npm run dev
+
+## 🙏 Acknowledgments
+
+Data from Rick & Morty API
+UI Components by Chakra UI
+Icons by React Icons
+Animation by Framer Motion
