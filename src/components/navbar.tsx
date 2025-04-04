@@ -68,9 +68,9 @@ export default function Navbar() {
               py={2}
               fontWeight="medium"
               href={link.href}
-              color={pathname === link.href ? "blue.500" : "red.600"} // Highlights active page
+              color={pathname === link.href ? "blue.500" : "teal.600"} // Highlights active page
               borderBottom={pathname === link.href ? `2px solid` : "none"} // Underline active page
-              borderColor={"red.600"}
+              borderColor={"teal.600"}
               _hover={{
                 textDecoration: "none",
                 color: "blue.500",
@@ -103,9 +103,9 @@ export default function Navbar() {
                 href={link.href}
                 p={2}
                 fontWeight="medium"
-                color={pathname === link.href ? "blue.500" : "red.600"}
+                color={pathname === link.href ? "blue.500" : "teal.600"}
                 borderLeft={pathname === link.href ? `2px solid` : "none"} // Left border for active page
-                borderColor={"red.600"}
+                borderColor={"teal.600"}
                 _hover={{
                   textDecoration: "none",
                   bg: "gray.50",
