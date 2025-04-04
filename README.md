@@ -48,6 +48,9 @@
 ## 🙏 Acknowledgments
 
 Data from Rick & Morty API
+
 UI Components by Chakra UI
+
 Icons by React Icons
+
 Animation by Framer Motion
