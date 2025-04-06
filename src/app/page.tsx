@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 import { useRouter } from "next/navigation";
 import { useUserData } from "@/context/user-data";
+import { UserData } from "@/types/user";
 
 export default function Home() {
   const [displayText, setDisplayText] = useState("");
@@ -13,10 +14,11 @@ export default function Home() {
   const router = useRouter();
   const [route, setRoute] = useState("");
   const description = `Rick and Morty is an animated series that follows the misadventures of cynical mad scientist Rick Sanchez and his good-hearted but fretful grandson Morty Smith. Together, they navigate the infinite universes, encountering bizarre creatures, alternate realities, and unpredictable challenges across the multiverse.`;
-  const { userData, localStorageHasUserData } = useUserData();
+  const { getData } = useUserData();
 
   useEffect(() => {
-    if (!userData || !localStorageHasUserData()) {
+    const userData: UserData | null = getData();
+    if (!userData) {
       setRoute("/userinfo");
     } else {
       setRoute("/information");
@@ -33,6 +35,7 @@ export default function Home() {
   }, [currentIndex]);
 
   const checkInfoRoute = () => route == "/information";
+
   const handleSubmit = () => {
     router.push(route);
   };

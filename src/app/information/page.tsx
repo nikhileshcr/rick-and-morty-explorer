@@ -2,7 +2,7 @@
 // Client-side component for displaying paginated character information
 
 // Core React and Next.js imports
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 
 // Chakra UI components for layout and styling
@@ -17,7 +17,7 @@ import CharacterPagination from "@/components/character-pagination";
 import { GET_CHARACTERS } from "@/constants/queries";
 import { Character } from "@/types/chatacter";
 import GlobalSpinner from "@/components/spinner";
-import { useUserData } from "@/context/user-data";
+// import { useUserData } from "@/context/user-data";
 import { CHARACTER_HEADING } from "@/constants/general-messages";
 
 /**
@@ -43,10 +43,6 @@ function InformationContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // User Information context
-  const { userData, localStorageHasUserData } = useUserData();
-  const [skipCall, setSkipCall] = useState(true);
-
   /**
    * User Information and Pagination Effect
    * Handles:
@@ -59,23 +55,7 @@ function InformationContent() {
     if (searchParams.get("page") === null) {
       router.push(`?page=1`);
     }
-
-    // Validate user credentials
-    if (
-      userData &&
-      userData.name.trim().length > 0 &&
-      userData.jobTitle.trim().length > 0
-    ) {
-      setSkipCall(false); // Enable data fetching
-    } else {
-      router.push("/userinfo");
-    }
-
-    // Check local storage persistence
-    if (!localStorageHasUserData()) {
-      router.push("/userinfo");
-    }
-  }, [searchParams, router, userData]);
+  }, [searchParams, router]);
 
   // Get current page from URL parameters
   const currentPage = parseInt(searchParams.get("page") as string, 10);
@@ -88,7 +68,6 @@ function InformationContent() {
    */
   const { loading, error, data } = useQuery(GET_CHARACTERS, {
     variables: { pageNo: currentPage },
-    skip: skipCall, // Skip query until Information validated
   });
 
   // Loading state handling

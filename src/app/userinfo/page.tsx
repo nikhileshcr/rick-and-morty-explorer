@@ -17,6 +17,7 @@ import { useUserData } from "@/context/user-data";
 import { useRouter } from "next/navigation";
 import { formFields } from "@/constants/user-info";
 import { CANNOT_BE_BLANK, DELETE, SAVE } from "@/constants/general-messages";
+import { UserData } from "@/types/user";
 
 export default function UserInfo() {
   // State Management
@@ -29,8 +30,7 @@ export default function UserInfo() {
   const [loading, setLoading] = useState(true); // Loading state for initial data check
 
   // Context and Routing
-  const { userData, saveStatePersistent, localStorageHasUserData } =
-    useUserData();
+  const { getData, saveData } = useUserData();
   const router = useRouter();
 
   /**
@@ -40,8 +40,10 @@ export default function UserInfo() {
    * - Setting initial form values
    * - Verifying localStorage existence
    */
+
   useEffect(() => {
-    if (userData && localStorageHasUserData()) {
+    const userData: UserData | null = getData();
+    if (userData) {
       setFormData({
         name: userData.name,
         jobTitle: userData.jobTitle,
@@ -49,7 +51,7 @@ export default function UserInfo() {
       setShowDelete(true); // Enable delete for existing users
     }
     setLoading(false); // Complete initial load
-  }, [userData]);
+  }, []);
 
   /**
    * Handles input changes and updates form state
@@ -78,7 +80,7 @@ export default function UserInfo() {
 
     // Proceed if no errors
     if (!Object.values(newErrorState).some(Boolean)) {
-      saveStatePersistent(formData);
+      saveData(formData);
       router.push("/information?page=1");
     }
   };
@@ -89,7 +91,7 @@ export default function UserInfo() {
    * - Resets form state
    */
   const handleDelete = () => {
-    saveStatePersistent(null);
+    saveData(null);
     setFormData({ name: "", jobTitle: "" });
     setShowDelete(false);
   };
