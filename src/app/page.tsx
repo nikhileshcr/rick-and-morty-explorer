@@ -7,13 +7,13 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useUserData } from "@/context/user-data";
 import { UserData } from "@/types/user";
+import { RICK_TAG_LINE, SHOW_DESC } from "@/constants/general-messages";
 
 export default function Home() {
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const router = useRouter();
   const [route, setRoute] = useState("");
-  const description = `Rick and Morty is an animated series that follows the misadventures of cynical mad scientist Rick Sanchez and his good-hearted but fretful grandson Morty Smith. Together, they navigate the infinite universes, encountering bizarre creatures, alternate realities, and unpredictable challenges across the multiverse.`;
   const { getData } = useUserData();
 
   useEffect(() => {
@@ -24,9 +24,9 @@ export default function Home() {
       setRoute("/information");
     }
 
-    if (currentIndex < description.length) {
+    if (currentIndex < SHOW_DESC.length) {
       const timeout = setTimeout(() => {
-        setDisplayText((prev) => prev + description[currentIndex]);
+        setDisplayText((prev) => prev + SHOW_DESC[currentIndex]);
         setCurrentIndex((prev) => prev + 1);
       }, 40);
 
@@ -62,14 +62,13 @@ export default function Home() {
         <Text
           fontSize={{ base: "lg", md: "xl" }}
           color="white"
-          fontFamily="monospace"
           whiteSpace="pre-wrap"
           position="relative"
         >
           {displayText}
         </Text>
 
-        {currentIndex >= description.length && (
+        {currentIndex >= SHOW_DESC.length && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -82,7 +81,7 @@ export default function Home() {
               textAlign="center"
               fontWeight="bold"
             >
-              Wubba Lubba Dub Dub! 🚀
+              {RICK_TAG_LINE}
             </Text>
           </motion.div>
         )}

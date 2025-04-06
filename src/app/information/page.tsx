@@ -18,7 +18,7 @@ import { GET_CHARACTERS } from "@/constants/queries";
 import { Character } from "@/types/chatacter";
 import GlobalSpinner from "@/components/spinner";
 // import { useUserData } from "@/context/user-data";
-import { CHARACTER_HEADING } from "@/constants/general-messages";
+import { CHARACTER_HEADING, NO_DATA_FOUND } from "@/constants/general-messages";
 
 /**
  * Information Component
@@ -81,6 +81,10 @@ function InformationContent() {
   if (error)
     return <Tag.Root colorScheme="red.500">Error: {error.message}</Tag.Root>;
 
+  // check if data is empty
+  const checkIfNoData = () => {
+    return data.characters.results.length === 0;
+  };
   /**
    * Main Component Render
    * Conditionally renders after data load with:
@@ -103,31 +107,32 @@ function InformationContent() {
         </Box>
 
         {/* Header Section with Title and Pagination */}
-        <Box
-          display="flex"
-          flexDirection={{ base: "column", lg: "row" }}
-          justifyContent="space-between"
-        >
-          <Box display="flex" alignItems="center">
-            <Text
-              color={"gray.200"}
-              textAlign="center"
-              fontSize="larger"
-              fontWeight="bolder"
-              role="heading"
-              aria-level={2}
-            >
-              {CHARACTER_HEADING}
-            </Text>
+        {!checkIfNoData() && (
+          <Box
+            display="flex"
+            flexDirection={{ base: "column", lg: "row" }}
+            justifyContent="space-between"
+          >
+            <Box display="flex" alignItems="center">
+              <Text
+                color={"gray.200"}
+                textAlign="center"
+                fontSize="larger"
+                fontWeight="bolder"
+                role="heading"
+                aria-level={2}
+              >
+                {CHARACTER_HEADING}
+              </Text>
+            </Box>
+            <CharacterPagination
+              totalCharacters={totalCharacters}
+              totalPages={totalPages}
+              currentPage={currentPage}
+              loading={loading}
+            />
           </Box>
-
-          <CharacterPagination
-            totalCharacters={totalCharacters}
-            totalPages={totalPages}
-            currentPage={currentPage}
-            loading={loading}
-          />
-        </Box>
+        )}
 
         {/* Responsive Character Grid */}
         <SimpleGrid
@@ -144,14 +149,31 @@ function InformationContent() {
             />
           ))}
         </SimpleGrid>
+        {checkIfNoData() && (
+          <Box
+            maxW="2xl"
+            bg="blackAlpha.800"
+            p={8}
+            borderRadius="xl"
+            border="2px solid"
+            borderColor="teal.400"
+            boxShadow="xl"
+            margin="auto"
+            mt="10"
+          >
+            <Text>{NO_DATA_FOUND}</Text>
+          </Box>
+        )}
 
         {/* Bottom Pagination */}
-        <CharacterPagination
-          totalCharacters={totalCharacters}
-          totalPages={totalPages}
-          currentPage={currentPage}
-          loading={loading}
-        />
+        {!checkIfNoData() && (
+          <CharacterPagination
+            totalCharacters={totalCharacters}
+            totalPages={totalPages}
+            currentPage={currentPage}
+            loading={loading}
+          />
+        )}
       </Box>
     )
   );
