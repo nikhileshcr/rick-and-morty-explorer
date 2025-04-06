@@ -161,7 +161,7 @@ function InformationContent() {
             margin="auto"
             mt="10"
           >
-            <Text>{NO_DATA_FOUND}</Text>
+            <Text color="whiteAlpha.900">{NO_DATA_FOUND}</Text>
           </Box>
         )}
 

@@ -7,7 +7,13 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useUserData } from "@/context/user-data";
 import { UserData } from "@/types/user";
-import { RICK_TAG_LINE, SHOW_DESC } from "@/constants/general-messages";
+import {
+  EXPLORE_CHARACTERS,
+  GET_STARTED,
+  INFO_AVAILABLE,
+  RICK_TAG_LINE,
+  SHOW_DESC,
+} from "@/constants/general-messages";
 
 export default function Home() {
   const [displayText, setDisplayText] = useState("");
@@ -87,7 +93,7 @@ export default function Home() {
         )}
         {checkInfoRoute() && (
           <Text color="whiteAlpha.900" mt={16}>
-            User info is available! Click below to exlore all the characters!
+            {INFO_AVAILABLE}
           </Text>
         )}
         <Button
@@ -98,7 +104,7 @@ export default function Home() {
           onClick={handleSubmit}
           mt="12"
         >
-          {checkInfoRoute() ? "Explore" : "Get Started"}
+          {checkInfoRoute() ? EXPLORE_CHARACTERS : GET_STARTED}
         </Button>
       </Box>
     </Box>
