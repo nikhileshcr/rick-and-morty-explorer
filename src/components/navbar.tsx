@@ -32,7 +32,7 @@ export default function Navbar() {
       top={0}
       zIndex={10} // Ensures it's above other elements
       boxShadow="sm"
-      bg={{ base: "gray.200", sm: "gray.200", lg: "transparent" }} // Different background for mobile vs desktop
+      bg="gray.200" // Different background for mobile vs desktop
     >
       <Flex
         mx="auto"
@@ -42,20 +42,10 @@ export default function Navbar() {
         justify="space-between"
       >
         <Link href="/">
-          {/* Logo for Desktop */}
-          <Image
-            src="images/as-white-logo.png"
-            w="35%"
-            alt="AS logo"
-            display={{ base: "none", sm: "none", lg: "block" }} // Hidden on small screens
-          ></Image>
-
-          {/* Logo for Mobile */}
           <Image
             src="images/as-black-logo.png"
-            w="35%"
+            w={{ base: "35%", sm: "35%", lg: "10%" }}
             alt="AS logo"
-            display={{ lg: "none" }} // Visible only on mobile
           ></Image>
         </Link>
 
@@ -66,6 +56,7 @@ export default function Navbar() {
               key={link.name}
               px={4}
               py={2}
+              w="max-content"
               fontWeight="medium"
               href={link.href}
               color={pathname === link.href ? "blue.500" : "teal.600"} // Highlights active page
