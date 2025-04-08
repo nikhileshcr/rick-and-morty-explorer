@@ -26,8 +26,8 @@ const mockCharacter: Character = {
   episode: [],
 };
 
-describe("Page", () => {
-  it("renders a heading", () => {
+describe("Character card", () => {
+  it("should render a character card", () => {
     render(<CharacterCard character={mockCharacter} />, {
       wrapper: AllTheProviders,
     });

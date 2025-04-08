@@ -15,6 +15,7 @@
     "@chakra-ui/theme-tools": "^2.2.6",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@vercel/analytics": "^1.5.0",
     "framer-motion": "^12.6.3",
     "graphql": "^16.10.0",
     "lodash.startcase": "^4.4.0",
